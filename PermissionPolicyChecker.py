@@ -399,7 +399,7 @@ class BurpExtender(IBurpExtender, IHttpListener, ITab, IScannerCheck):
             issues.append(self.makeIssueRecord(
                 'Permissions-Policy header missing',
                 'The response does not include an enforcing <code>Permissions-Policy</code> header.',
-                'Information',
+                'Low',
                 'Certain',
                 'Permissions-Policy can restrict access to browser features such as camera, microphone, geolocation, payment, USB, serial, and screen capture. Missing policy is usually a hardening gap rather than a direct vulnerability.',
                 'Add a least-privilege Permissions-Policy header for document responses. For applications that do not need privileged browser APIs, explicitly deny sensitive features with an empty allowlist, for example <code>camera=(), microphone=(), geolocation=()</code>.'
@@ -419,7 +419,7 @@ class BurpExtender(IBurpExtender, IHttpListener, ITab, IScannerCheck):
             issues.append(self.makeIssueRecord(
                 'Permissions-Policy configured in report-only mode only',
                 'The response includes <code>Permissions-Policy-Report-Only</code> but does not include an enforcing <code>Permissions-Policy</code> header.',
-                'Information',
+                'Low',
                 'Certain',
                 'Report-only mode can collect telemetry, but it does not block feature use.',
                 'Keep the report-only header for staged rollout if useful, but add an enforcing Permissions-Policy header once legitimate feature use has been confirmed.'
